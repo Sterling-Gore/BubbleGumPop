@@ -297,9 +297,10 @@ GameObject:
   - component: {fileID: 381542426}
   - component: {fileID: 381542425}
   - component: {fileID: 381542424}
+  - component: {fileID: 381542428}
   - component: {fileID: 381542423}
   - component: {fileID: 381542427}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -466,6 +467,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &381542428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381542422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff299fdc1e71404580ef8218e0e341e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BubbleTemplate: {fileID: 653864908}
+  BubbleContainer: {fileID: 1153209143}
+  cam: {fileID: 1088554357}
 --- !u!1 &653864904
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,13 +494,14 @@ GameObject:
   - component: {fileID: 653864907}
   - component: {fileID: 653864906}
   - component: {fileID: 653864905}
+  - component: {fileID: 653864909}
   m_Layer: 7
-  m_Name: Circle (1)
+  m_Name: BubbleTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &653864905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,10 +516,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popJumpSpeed: 18
   Player_rb: {fileID: 381542423}
-  Player: {fileID: 381542426}
-  bubbleLayer:
+  PlayerLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
 --- !u!58 &653864906
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -598,13 +614,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653864904}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.24, y: 0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1153209143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &653864909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653864904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f03663a9d35ab4ba36d55803c3f657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reachedDestination: 0
+  start: 0
+  destination: {x: 0, y: 0}
 --- !u!1 &798871756
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,6 +998,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1153209142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1153209143}
+  m_Layer: 0
+  m_Name: BubblesContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1153209143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153209142}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 653864908}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1583298531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,4 +1198,4 @@ SceneRoots:
   - {fileID: 381542426}
   - {fileID: 183997058}
   - {fileID: 798871760}
-  - {fileID: 653864908}
+  - {fileID: 1153209143}
