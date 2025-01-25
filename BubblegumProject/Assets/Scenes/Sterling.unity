@@ -345,6 +345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ef64a1c5a7a2c4782b68a9316078c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runSpeed: 8
+  jumpSpeed: 16
   rb: {fileID: 381542423}
   groundCheck: {fileID: 1753929012}
   groundLayer:
@@ -476,7 +478,7 @@ GameObject:
   - component: {fileID: 653864907}
   - component: {fileID: 653864906}
   - component: {fileID: 653864905}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +497,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2b303b4bb3fb742a7db961a6e72a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popJumpSpeed: 18
   Player_rb: {fileID: 381542423}
+  Player: {fileID: 381542426}
+  bubbleLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!58 &653864906
 CircleCollider2D:
   m_ObjectHideFlags: 0
