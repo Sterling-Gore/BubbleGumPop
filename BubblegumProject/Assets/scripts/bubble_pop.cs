@@ -19,7 +19,7 @@ public class bubble_pop : MonoBehaviour
     {
         //if you are in the bubble and falling, pop the bubble and launch the player up
         //if(Physics2D.OverlapCircle(Player.position, 0.2f, bubbleLayer) && Player_rb.velocity.y < 0f)
-        if(Physics2D.OverlapCircle(gameObject.transform.position, 0.2f, PlayerLayer) && Player_rb.velocity.y < 0f)
+        if(Physics2D.OverlapCircle(gameObject.transform.position, 0.2f, PlayerLayer) && Player_rb.velocity.y <= 0f)
         {
             Player_rb.velocity = new Vector2(Player_rb.velocity.x, popJumpSpeed);
             //gameObject.SetActive(false);
