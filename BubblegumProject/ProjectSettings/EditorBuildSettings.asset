@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ilan's Folder/Scenes/Start Menu.unity
     guid: 834d766acbd961f49b10648d58aaff94
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Ilan's Folder/Scenes/Options Menu.unity
     guid: fab662c4ce4e2e341953cd873ad3c029
   - enabled: 0
     path: Assets/Scenes/Ilan's Folder/Scenes/Stage One.unity
     guid: 4de7f6fd94903f4408d76f8458faf2e8
+  - enabled: 1
+    path: Assets/Scenes/Sterling.unity
+    guid: ed4b5c12eff3ca24f823fd899d67ad72
   m_configObjects: {}
