@@ -29,11 +29,13 @@ public class BotAnimations : MonoBehaviour
         {
             renderer.sprite = dash;
             animator.enabled = false;
+            Debug.Log("Dashing");
         }
         else if(shootScript.isShooting)
         {
             animator.runtimeAnimatorController = ShootingAnimation;
             animator.enabled = true;
+            Debug.Log("Shooting");
         }
         else if(!movementScript.IsGrounded())
         {
@@ -41,22 +43,26 @@ public class BotAnimations : MonoBehaviour
             {
                 renderer.sprite = fall;
                 animator.enabled = false;
+                Debug.Log("Fall");
             }
             else
             {
                 renderer.sprite = jump;
                 animator.enabled = false;
+                Debug.Log("Jump");
             }
         }
         else if(Mathf.Abs(Player_rb.velocity.x) > 0f)
         {
             animator.runtimeAnimatorController = walkingAnimation;
             animator.enabled = true;
+            Debug.Log("walking");
         }
         else  
         {
             renderer.sprite = idle;
             animator.enabled = false;
+            Debug.Log("idle");
             
         }
     }
