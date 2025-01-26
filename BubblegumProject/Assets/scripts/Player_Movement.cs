@@ -15,6 +15,11 @@ public class Player_Movement : MonoBehaviour
     private float dashCooldown;
     public bool unlockedDash;
 
+    public AudioSource audioSource;
+    public AudioClip dashSFX;    
+    public AudioClip jumpSFX; 
+
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform  groundCheck1;
     //[SerializeField] private Transform  groundCheck2;
@@ -61,6 +66,7 @@ public class Player_Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
+            audioSource.PlayOneShot(jumpSFX);
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             canJump = false;
         }
@@ -71,6 +77,7 @@ public class Player_Movement : MonoBehaviour
         if(Input.GetKey(KeyCode.Mouse1) && canDash && unlockedDash)
         {
             //Debug.Log("dash");
+            audioSource.PlayOneShot(dashSFX);
             StartCoroutine(Dash());
             canDash = false;
             UIcontroller.usedDash();
