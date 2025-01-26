@@ -8,28 +8,35 @@ public class ManageScene : MonoBehaviour
 
     //int x = 0;
     //int y = 0;
-    
+    public static ManageScene Instance = null;
+
     public void SetInitialScreenRes()
     {
         // Set initial screen resolution
         //Screen.SetResolution(x, y, Screen.fullScreenMode);
     }
-    /*void Awake()
+    void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("SceneManager");
+        // If there is not already an instance of SoundManager, set it to this.
+		if (Instance == null)
+		{
+			Instance = this;
+		}
+		//If an instance already exists, destroy whatever this object is to enforce the singleton.
+		else if (Instance != this)
+		{
+			Destroy(gameObject);
+		}
 
-        if (objs.Length > 1)
-        {
-            Destroy(this.gameObject);
-        }
-
-        DontDestroyOnLoad(this.gameObject);
+		//Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
+		DontDestroyOnLoad (gameObject);
         
-    }*/
+    }
+
     public void PlayGame()
     {
         //GameStateManager.instance.NewGame();
-        SceneManager.LoadSceneAsync("Stage One");
+        SceneManager.LoadSceneAsync("Sterling");
     }
 
 
