@@ -10,6 +10,10 @@ public class shoot_Bubble : MonoBehaviour
     [SerializeField] private Transform BubbleContainer;
     [SerializeField] private Camera cam;
     [SerializeField] private float Bubble_Spawn_Distance = 1.2f;
+
+    public AudioSource audioSource;
+
+    public AudioClip bubbleSpawnSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +25,7 @@ public class shoot_Bubble : MonoBehaviour
     {
         if( Input.GetKeyDown(KeyCode.Mouse0) && !isShooting && bubblemanager.available_bubbles > 0)
         {
+            audioSource.PlayOneShot(bubbleSpawnSFX);
             //makes it so the manager keeps track of the fact that the bubble has been shot
             bubblemanager.decrease_bubbles();
             
