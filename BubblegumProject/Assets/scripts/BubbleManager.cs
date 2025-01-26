@@ -8,11 +8,12 @@ public class BubbleManager : MonoBehaviour
     public int available_bubbles;
     public int queued_bubbles;
     [SerializeField] private Player_Movement movementScript;
+    [SerializeField] private UI_Controller UIController;
 
     void Start()
     {
         queued_bubbles = 0;
-        total_bubbles = 1;
+        total_bubbles = 0;
         available_bubbles = total_bubbles;
     }
 
@@ -27,6 +28,7 @@ public class BubbleManager : MonoBehaviour
     
     public void Increase_Number_Of_Bubbles()
     {
+        UIController.unlockBubble(total_bubbles);
         total_bubbles += 1;
         available_bubbles = total_bubbles;
     }
@@ -35,11 +37,13 @@ public class BubbleManager : MonoBehaviour
     {
         available_bubbles = Mathf.Clamp(available_bubbles+queued_bubbles, 0, total_bubbles);
         queued_bubbles = 0;
+        UIController.refreshBubble(available_bubbles);
         //available_bubbles = total_bubbles;
     }
 
     public void decrease_bubbles()
     {
         available_bubbles -= 1;
+        UIController.usedBubble(available_bubbles);
     }
 }

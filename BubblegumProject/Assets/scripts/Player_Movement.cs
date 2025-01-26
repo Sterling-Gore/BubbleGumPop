@@ -13,6 +13,7 @@ public class Player_Movement : MonoBehaviour
     private bool facingRight = true;
     private float originalGravity;
     private float dashCooldown;
+    public bool unlockedDash;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform  groundCheck1;
@@ -30,6 +31,7 @@ public class Player_Movement : MonoBehaviour
         isDashing = false;
         canDash = false;
         dashCooldown = 0f;
+        unlockedDash = false;
     }
 
     // Update is called once per frame
@@ -46,7 +48,7 @@ public class Player_Movement : MonoBehaviour
         {
             rb.gravityScale = 0f;
             canJump = true;
-            if(dashCooldown <= 0f)
+            if(dashCooldown <= 0f && unlockedDash)
             {
                 dashRefreshed();
             }
@@ -66,7 +68,7 @@ public class Player_Movement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-        if(Input.GetKey(KeyCode.Mouse1) && canDash)
+        if(Input.GetKey(KeyCode.Mouse1) && canDash && unlockedDash)
         {
             //Debug.Log("dash");
             StartCoroutine(Dash());
