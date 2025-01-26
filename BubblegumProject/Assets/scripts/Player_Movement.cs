@@ -9,15 +9,18 @@ public class Player_Movement : MonoBehaviour
     public float runSpeed = 8f;
     public float jumpSpeed = 16f;
     private bool facingRight = true;
+    private float originalGravity;
 
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform  groundCheck;
+    [SerializeField] private Transform  groundCheck1;
+    [SerializeField] private Transform  groundCheck2;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] private float dashTime = 1f;
     // Start is called before the first frame update
     void Start()
     {
+        originalGravity = rb.gravityScale;
         isDashing = false;
     }
 
@@ -30,6 +33,15 @@ public class Player_Movement : MonoBehaviour
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        if(IsGrounded())
+        {
+            rb.gravityScale = 0f;
+        }
+        else
+        {
+            rb.gravityScale = originalGravity;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
@@ -58,7 +70,7 @@ public class Player_Movement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck1.position, 0.2f, groundLayer) || Physics2D.OverlapCircle(groundCheck2.position, 0.2f, groundLayer);
     }
 
     void FlipPlayer()
@@ -76,7 +88,6 @@ public class Player_Movement : MonoBehaviour
     {
         Debug.Log("dash");
         isDashing = true;
-        float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashSpeed, 0f );
         yield return new WaitForSeconds(dashTime);
