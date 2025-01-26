@@ -5,6 +5,7 @@ using UnityEngine;
 public class shoot_Bubble : MonoBehaviour
 {
     public bool isShooting;
+    [SerializeField] private BubbleManager bubblemanager;
     [SerializeField] private Transform BubbleTemplate;
     [SerializeField] private Transform BubbleContainer;
     [SerializeField] private Camera cam;
@@ -18,8 +19,11 @@ public class shoot_Bubble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if( Input.GetKeyDown(KeyCode.Mouse0) && !isShooting)
+        if( Input.GetKeyDown(KeyCode.Mouse0) && !isShooting && bubblemanager.available_bubbles > 0)
         {
+            //makes it so the manager keeps track of the fact that the bubble has been shot
+            bubblemanager.decrease_bubbles();
+            
             isShooting = true;
             StartCoroutine(ShootWait());
             Transform NewBubble = Instantiate(BubbleTemplate, BubbleContainer);
