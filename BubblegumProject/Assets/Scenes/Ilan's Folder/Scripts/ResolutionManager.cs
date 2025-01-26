@@ -17,6 +17,9 @@ public class ResolutionManager : MonoBehaviour
         // Clear existing options in the dropdown
         resolutionDropdown.ClearOptions();
 
+        // Set initial screen resolution
+        Screen.SetResolution(1920, 1080, Screen.fullScreenMode);
+
         // Create a list of resolution options as strings
         var options = new System.Collections.Generic.List<string>();
         int currentResolutionIndex = 0;
@@ -39,7 +42,7 @@ public class ResolutionManager : MonoBehaviour
 
         // Set the current resolution as the selected option
         resolutionDropdown.value = currentResolutionIndex;
-        //resolutionDropdown.RefreshShownValue();
+        resolutionDropdown.RefreshShownValue();
 
         // Add a listener for when the value changes
         resolutionDropdown.onValueChanged.AddListener(SetResolution);
