@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 public class ManageScene : MonoBehaviour
 {
 
+    //int x = 0;
+    //int y = 0;
+    
+    public void SetInitialScreenRes()
+    {
+        // Set initial screen resolution
+        //Screen.SetResolution(x, y, Screen.fullScreenMode);
+    }
     /*void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("SceneManager");
@@ -21,7 +29,7 @@ public class ManageScene : MonoBehaviour
     public void PlayGame()
     {
         //GameStateManager.instance.NewGame();
-        SceneManager.LoadSceneAsync("Ilan_UISetup");
+        SceneManager.LoadSceneAsync("Stage One");
     }
 
 
