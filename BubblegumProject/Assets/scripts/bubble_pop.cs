@@ -15,6 +15,9 @@ public class bubble_pop : MonoBehaviour
     [SerializeField] private Sprite popped;
     [SerializeField] private SpriteRenderer renderer;
     [SerializeField] private Collider2D bubbleCollider;
+    
+    public AudioSource audioSource;
+    public AudioClip bubblePopSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,7 @@ public class bubble_pop : MonoBehaviour
         //if(Physics2D.OverlapCircle(Player.position, 0.2f, bubbleLayer) && Player_rb.velocity.y < 0f)
         if(Physics2D.OverlapCircle(gameObject.transform.position, .5f, PlayerLayer) && Player_rb.velocity.y <= 0f)
         {
+            audioSource.PlayOneShot(bubblePopSFX);
             Player_rb.velocity = new Vector2(Player_rb.velocity.x, popJumpSpeed);
             //gameObject.SetActive(false);
             StartCoroutine(pop_animation(false));
