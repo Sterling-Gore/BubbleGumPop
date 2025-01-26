@@ -7,6 +7,8 @@ public class bubble_pop : MonoBehaviour
     public float popJumpSpeed = 18f;
     public bool isPopped = false;
     [SerializeField] private Rigidbody2D Player_rb;
+    [SerializeField] private BubbleManager bubblemanager;
+    [SerializeField] private Player_Movement movementScript;
    // [SerializeField] private Transform Player;
     [SerializeField] private LayerMask PlayerLayer;
     [SerializeField] private Animator PopAnimation;
@@ -24,11 +26,12 @@ public class bubble_pop : MonoBehaviour
     {
         //if you are in the bubble and falling, pop the bubble and launch the player up
         //if(Physics2D.OverlapCircle(Player.position, 0.2f, bubbleLayer) && Player_rb.velocity.y < 0f)
-        if(Physics2D.OverlapCircle(gameObject.transform.position, 0.2f, PlayerLayer) && Player_rb.velocity.y <= 0f)
+        if(Physics2D.OverlapCircle(gameObject.transform.position, .5f, PlayerLayer) && Player_rb.velocity.y <= 0f)
         {
             Player_rb.velocity = new Vector2(Player_rb.velocity.x, popJumpSpeed);
             //gameObject.SetActive(false);
             StartCoroutine(pop_animation(false));
+            movementScript.dashRefreshed();
         }
     }
 
@@ -59,6 +62,7 @@ public class bubble_pop : MonoBehaviour
         bubbleCollider.enabled = false;
         renderer.sprite = popped;
         time = .5f;
+        bubblemanager.queued_bubbles += 1;
         while(time > 0)
         {
             time -= Time.deltaTime;
