@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Ilan's Folder/Scenes/Start Menu.unity
+    guid: 834d766acbd961f49b10648d58aaff94
+  - enabled: 1
+    path: Assets/Scenes/Ilan's Folder/Scenes/Options Menu.unity
+    guid: fab662c4ce4e2e341953cd873ad3c029
+  - enabled: 1
+    path: Assets/Scenes/Ilan's Folder/Scenes/Ilan_UISetup.unity
+    guid: 3cd18a7692616a347937d39b37539c0f
   m_configObjects: {}
