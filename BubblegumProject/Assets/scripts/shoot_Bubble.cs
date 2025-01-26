@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class shoot_Bubble : MonoBehaviour
 {
+    public bool isShooting;
     [SerializeField] private Transform BubbleTemplate;
     [SerializeField] private Transform BubbleContainer;
     [SerializeField] private Camera cam;
@@ -11,14 +12,16 @@ public class shoot_Bubble : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        isShooting = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if( Input.GetKeyDown(KeyCode.Mouse0) )
+        if( Input.GetKeyDown(KeyCode.Mouse0) && !isShooting)
         {
+            isShooting = true;
+            StartCoroutine(ShootWait());
             Transform NewBubble = Instantiate(BubbleTemplate, BubbleContainer);
             NewBubble.gameObject.SetActive(true);
             Vector3 mousePos = Input.mousePosition;
@@ -54,6 +57,17 @@ public class shoot_Bubble : MonoBehaviour
     bool VectorIsBetweenPlayerAndBubbleSpawn(Vector2 PlayerPos, Vector2 BubbleSpawnPos, Vector2 DestinationPos)
     {
         return (Vector2.Dot( (BubbleSpawnPos - PlayerPos).normalized, (DestinationPos- BubbleSpawnPos).normalized) <0f && Vector2.Dot( (PlayerPos-BubbleSpawnPos).normalized,  (DestinationPos-PlayerPos).normalized) <0f);
+    }
+
+    IEnumerator ShootWait()
+    {
+        float time = .4f;
+        while(time > 0)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        isShooting = false;
     }
 
 }

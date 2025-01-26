@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
     private float horizontal;
-    private bool isDashing;
+    public bool isDashing;
     public float runSpeed = 8f;
     public float jumpSpeed = 16f;
     private bool facingRight = true;
@@ -68,7 +68,7 @@ public class Player_Movement : MonoBehaviour
         rb.velocity = new Vector2(horizontal * runSpeed, rb.velocity.y);
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck1.position, 0.2f, groundLayer) || Physics2D.OverlapCircle(groundCheck2.position, 0.2f, groundLayer);
     }

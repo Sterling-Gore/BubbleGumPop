@@ -7,6 +7,7 @@ public class bubble_movement : MonoBehaviour
     public bool reachedDestination = false;
     public bool start = false;
     public Vector2 destination;
+    [SerializeField] private bubble_pop popScript;
 
     // Update is called once per frame
     void Update()
@@ -32,6 +33,9 @@ public class bubble_movement : MonoBehaviour
             time -= Time.deltaTime;
             yield return null;
         }
-        Destroy(gameObject);
+        if(!popScript.isPopped)
+        {
+            StartCoroutine(popScript.pop_animation(true));
+        }
     }
 }
